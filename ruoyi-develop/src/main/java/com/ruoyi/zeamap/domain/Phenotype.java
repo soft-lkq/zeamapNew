@@ -66,7 +66,7 @@ public class Phenotype extends BaseEntity
 
     /** 雄穗分枝数 */
     @Excel(name = "雄穗分枝数")
-    private Long malespikes;
+    private double malespikes;
 
     /** 雄花主轴长度 */
     @Excel(name = "雄花主轴长度")
@@ -134,8 +134,7 @@ public class Phenotype extends BaseEntity
 
     /** 轴色 */
     @Excel(name = "轴色")
-    private String 
-axiscolor;
+    private String axiscolor;
 
     /** 百粒重 */
     @Excel(name = "百粒重")
@@ -143,13 +142,11 @@ axiscolor;
 
     /** 籽粒长 */
     @Excel(name = "籽粒长")
-    private BigDecimal 
-grainlength;
+    private BigDecimal grainlength;
 
     /** 籽粒宽 */
     @Excel(name = "籽粒宽")
-    private BigDecimal 
-grainwidth;
+    private BigDecimal grainwidth;
 
     /** 小区标准产量 */
     @Excel(name = "小区标准产量")
@@ -159,350 +156,276 @@ grainwidth;
     @Excel(name = "出籽率")
     private BigDecimal seedyield;
 
-    public void setCode(Long code) 
-    {
+    public Long getCode() {
+        return code;
+    }
+
+    public void setCode(Long code) {
         this.code = code;
     }
 
-    public Long getCode() 
-    {
-        return code;
+    public String getPedigree() {
+        return pedigree;
     }
-    public void setPedigree(String pedigree) 
-    {
+    public void setPedigree(String pedigree) {
         this.pedigree = pedigree;
     }
 
-    public String getPedigree() 
-    {
-        return pedigree;
+    public String getNewsource() {
+        return newsource;
     }
-    public void setNewsource(String newsource) 
-    {
+
+    public void setNewsource(String newsource) {
         this.newsource = newsource;
     }
 
-    public String getNewsource() 
-    {
-        return newsource;
-    }
-    public void setPastsource(String pastsource) 
-    {
-        this.pastsource = pastsource;
-    }
-
-    public String getPastsource() 
-    {
+    public String getPastsource() {
         return pastsource;
     }
-    public void setYear(Long year) 
-    {
-        this.year = year;
-    }
 
-    public Long getYear() 
-    {
-        return year;
+    public void setPastsource(String pastsource) {
+        this.pastsource = pastsource;
     }
-    public void setLocation(String location) 
-    {
-        this.location = location;
-    }
-
-    public String getLocation() 
-    {
-        return location;
-    }
-    public void setSilking(Date silking) 
-    {
-        this.silking = silking;
-    }
-
-    public Date getSilking() 
-    {
-        return silking;
-    }
-    public void setDispersal(Date dispersal) 
-    {
-        this.dispersal = dispersal;
-    }
-
-    public Date getDispersal() 
-    {
-        return dispersal;
-    }
-    public void setMature(Date mature) 
-    {
-        this.mature = mature;
-    }
-
-    public Date getMature() 
-    {
-        return mature;
-    }
-    public void setHeight(BigDecimal height) 
-    {
-        this.height = height;
-    }
-
-    public BigDecimal getHeight() 
-    {
-        return height;
-    }
-    public void setEarheight(BigDecimal earheight) 
-    {
-        this.earheight = earheight;
-    }
-
-    public BigDecimal getEarheight() 
-    {
-        return earheight;
-    }
-    public void setMalespikes(Long malespikes) 
-    {
+    public void setMalespikes(double malespikes) {
         this.malespikes = malespikes;
     }
 
-    public Long getMalespikes() 
-    {
-        return malespikes;
-    }
-    public void setSpindlelength(BigDecimal spindlelength) 
-    {
-        this.spindlelength = spindlelength;
+    public String getAxiscolor() {
+        return axiscolor;
     }
 
-    public BigDecimal getSpindlelength() 
-    {
-        return spindlelength;
-    }
-    public void setLeaflength(BigDecimal leaflength) 
-    {
-        this.leaflength = leaflength;
-    }
-
-    public BigDecimal getLeaflength() 
-    {
-        return leaflength;
-    }
-    public void setLeafwidth(BigDecimal leafwidth) 
-    {
-        this.leafwidth = leafwidth;
-    }
-
-    public BigDecimal getLeafwidth() 
-    {
-        return leafwidth;
-    }
-    public void setStemdiameter(BigDecimal stemdiameter) 
-    {
-        this.stemdiameter = stemdiameter;
-    }
-
-    public BigDecimal getStemdiameter() 
-    {
-        return stemdiameter;
-    }
-    public void setRates(BigDecimal rates) 
-    {
-        this.rates = rates;
-    }
-
-    public BigDecimal getRates() 
-    {
-        return rates;
-    }
-    public void setRust(Long rust) 
-    {
-        this.rust = rust;
-    }
-
-    public Long getRust() 
-    {
-        return rust;
-    }
-    public void setStemrot(BigDecimal stemrot) 
-    {
-        this.stemrot = stemrot;
-    }
-
-    public BigDecimal getStemrot() 
-    {
-        return stemrot;
-    }
-    public void setRoughdwarf(BigDecimal roughdwarf) 
-    {
-        this.roughdwarf = roughdwarf;
-    }
-
-    public BigDecimal getRoughdwarf() 
-    {
-        return roughdwarf;
-    }
-    public void setHollow(BigDecimal hollow) 
-    {
-        this.hollow = hollow;
-    }
-
-    public BigDecimal getHollow() 
-    {
-        return hollow;
-    }
-    public void setPlantsnum(Long plantsnum) 
-    {
-        this.plantsnum = plantsnum;
-    }
-
-    public Long getPlantsnum() 
-    {
-        return plantsnum;
-    }
-    public void setBlackpowder(Long blackpowder) 
-    {
-        this.blackpowder = blackpowder;
-    }
-
-    public Long getBlackpowder() 
-    {
-        return blackpowder;
-    }
-    public void setExpression(String expression) 
-    {
-        this.expression = expression;
-    }
-
-    public String getExpression() 
-    {
-        return expression;
-    }
-    public void setSpikelength(BigDecimal spikelength) 
-    {
-        this.spikelength = spikelength;
-    }
-
-    public BigDecimal getSpikelength() 
-    {
-        return spikelength;
-    }
-    public void setSpikewidth(BigDecimal spikewidth) 
-    {
-        this.spikewidth = spikewidth;
-    }
-
-    public BigDecimal getSpikewidth() 
-    {
-        return spikewidth;
-    }
-    public void setRow(BigDecimal row) 
-    {
-        this.row = row;
-    }
-
-    public BigDecimal getRow() 
-    {
-        return row;
-    }
-    public void setKernels(BigDecimal kernels) 
-    {
-        this.kernels = kernels;
-    }
-
-    public BigDecimal getKernels() 
-    {
-        return kernels;
-    }
-    public void setaxiscolor(String axiscolor)
-    {
+    public void setAxiscolor(String axiscolor) {
         this.axiscolor = axiscolor;
     }
 
-    public String getaxiscolor()
-    {
-        return axiscolor;
-    }
-    public void setGrainweight(BigDecimal grainweight) 
-    {
-        this.grainweight = grainweight;
+    public BigDecimal getGrainlength() {
+        return grainlength;
     }
 
-    public BigDecimal getGrainweight() 
-    {
-        return grainweight;
-    }
-    public void setgrainlength(BigDecimal grainlength)
-    {
+    public void setGrainlength(BigDecimal grainlength) {
         this.grainlength = grainlength;
     }
 
-    public BigDecimal getgrainlength()
-    {
-        return grainlength;
+    public BigDecimal getGrainwidth() {
+        return grainwidth;
     }
-    public void setgrainwidth(BigDecimal grainwidth)
-    {
+
+    public void setGrainwidth(BigDecimal grainwidth) {
         this.grainwidth = grainwidth;
     }
 
-    public BigDecimal getgrainwidth()
-    {
-        return grainwidth;
+    public Long getYear() {
+        return year;
     }
-    public void setYield(BigDecimal yield) 
-    {
+
+    public void setYear(Long year) {
+        this.year = year;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Date getSilking() {
+        return silking;
+    }
+
+    public void setSilking(Date silking) {
+        this.silking = silking;
+    }
+
+    public Date getDispersal() {
+        return dispersal;
+    }
+
+    public void setDispersal(Date dispersal) {
+        this.dispersal = dispersal;
+    }
+
+    public Date getMature() {
+        return mature;
+    }
+
+    public void setMature(Date mature) {
+        this.mature = mature;
+    }
+
+    public BigDecimal getHeight() {
+        return height;
+    }
+
+    public void setHeight(BigDecimal height) {
+        this.height = height;
+    }
+
+    public BigDecimal getEarheight() {
+        return earheight;
+    }
+
+    public void setEarheight(BigDecimal earheight) {
+        this.earheight = earheight;
+    }
+
+    public double getMalespikes() {
+        return malespikes;
+    }
+
+    public BigDecimal getSpindlelength() {
+        return spindlelength;
+    }
+
+    public void setSpindlelength(BigDecimal spindlelength) {
+        this.spindlelength = spindlelength;
+    }
+
+    public BigDecimal getLeaflength() {
+        return leaflength;
+    }
+
+    public void setLeaflength(BigDecimal leaflength) {
+        this.leaflength = leaflength;
+    }
+
+    public BigDecimal getLeafwidth() {
+        return leafwidth;
+    }
+
+    public void setLeafwidth(BigDecimal leafwidth) {
+        this.leafwidth = leafwidth;
+    }
+
+    public BigDecimal getStemdiameter() {
+        return stemdiameter;
+    }
+
+    public void setStemdiameter(BigDecimal stemdiameter) {
+        this.stemdiameter = stemdiameter;
+    }
+
+    public BigDecimal getRates() {
+        return rates;
+    }
+
+    public void setRates(BigDecimal rates) {
+        this.rates = rates;
+    }
+
+    public Long getRust() {
+        return rust;
+    }
+
+    public void setRust(Long rust) {
+        this.rust = rust;
+    }
+
+    public BigDecimal getStemrot() {
+        return stemrot;
+    }
+
+    public void setStemrot(BigDecimal stemrot) {
+        this.stemrot = stemrot;
+    }
+
+    public BigDecimal getRoughdwarf() {
+        return roughdwarf;
+    }
+
+    public void setRoughdwarf(BigDecimal roughdwarf) {
+        this.roughdwarf = roughdwarf;
+    }
+
+    public BigDecimal getHollow() {
+        return hollow;
+    }
+
+    public void setHollow(BigDecimal hollow) {
+        this.hollow = hollow;
+    }
+
+    public Long getPlantsnum() {
+        return plantsnum;
+    }
+
+    public void setPlantsnum(Long plantsnum) {
+        this.plantsnum = plantsnum;
+    }
+
+    public Long getBlackpowder() {
+        return blackpowder;
+    }
+
+    public void setBlackpowder(Long blackpowder) {
+        this.blackpowder = blackpowder;
+    }
+
+    public String getExpression() {
+        return expression;
+    }
+
+    public void setExpression(String expression) {
+        this.expression = expression;
+    }
+
+    public BigDecimal getSpikelength() {
+        return spikelength;
+    }
+
+    public void setSpikelength(BigDecimal spikelength) {
+        this.spikelength = spikelength;
+    }
+
+    public BigDecimal getSpikewidth() {
+        return spikewidth;
+    }
+
+    public void setSpikewidth(BigDecimal spikewidth) {
+        this.spikewidth = spikewidth;
+    }
+
+    public BigDecimal getRow() {
+        return row;
+    }
+
+    public void setRow(BigDecimal row) {
+        this.row = row;
+    }
+
+    public BigDecimal getKernels() {
+        return kernels;
+    }
+
+    public void setKernels(BigDecimal kernels) {
+        this.kernels = kernels;
+    }
+
+    public BigDecimal getGrainweight() {
+        return grainweight;
+    }
+
+    public void setGrainweight(BigDecimal grainweight) {
+        this.grainweight = grainweight;
+    }
+
+    public BigDecimal getYield() {
+        return yield;
+    }
+
+    public void setYield(BigDecimal yield) {
         this.yield = yield;
     }
 
-    public BigDecimal getYield() 
-    {
-        return yield;
-    }
-    public void setSeedyield(BigDecimal seedyield) 
-    {
-        this.seedyield = seedyield;
-    }
-
-    public BigDecimal getSeedyield() 
-    {
+    public BigDecimal getSeedyield() {
         return seedyield;
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("code", getCode())
-            .append("pedigree", getPedigree())
-            .append("newsource", getNewsource())
-            .append("pastsource", getPastsource())
-            .append("year", getYear())
-            .append("location", getLocation())
-            .append("silking", getSilking())
-            .append("dispersal", getDispersal())
-            .append("mature", getMature())
-            .append("height", getHeight())
-            .append("earheight", getEarheight())
-            .append("malespikes", getMalespikes())
-            .append("spindlelength", getSpindlelength())
-            .append("leaflength", getLeaflength())
-            .append("leafwidth", getLeafwidth())
-            .append("stemdiameter", getStemdiameter())
-            .append("rates", getRates())
-            .append("rust", getRust())
-            .append("stemrot", getStemrot())
-            .append("roughdwarf", getRoughdwarf())
-            .append("hollow", getHollow())
-            .append("plantsnum", getPlantsnum())
-            .append("blackpowder", getBlackpowder())
-            .append("expression", getExpression())
-            .append("spikelength", getSpikelength())
-            .append("spikewidth", getSpikewidth())
-            .append("row", getRow())
-            .append("kernels", getKernels())
-            .append("axiscolor", getaxiscolor())
-            .append("grainweight", getGrainweight())
-            .append("grainlength", getgrainlength())
-            .append("grainwidth", getgrainwidth())
-            .append("yield", getYield())
-            .append("seedyield", getSeedyield())
-            .toString();
+    public void setSeedyield(BigDecimal seedyield) {
+        this.seedyield = seedyield;
+    }
+
+    public Phenotype() {
     }
 }

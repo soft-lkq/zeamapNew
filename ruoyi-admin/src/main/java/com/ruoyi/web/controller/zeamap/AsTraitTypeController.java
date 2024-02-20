@@ -26,7 +26,7 @@ import java.util.List;
  * @date 2023-07-05
  */
 @RestController
-@RequestMapping("/zeamap/type")
+@RequestMapping("/sidebarTree/type")
 public class AsTraitTypeController extends BaseController
 {
     @Autowired

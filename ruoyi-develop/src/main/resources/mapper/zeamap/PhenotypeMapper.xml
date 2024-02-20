@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="spikewidth"    column="spikeWidth"    />
         <result property="row"    column="row"    />
         <result property="kernels"    column="kernels"    />
-        <result property="axiscolor"    column="axisColor"    />
+        <result property="axiscolor"  jdbcType="VARCHAR"  column="axisColor"    />
         <result property="grainweight"    column="grainWeight"    />
         <result property="grainlength"    column="grainLength"    />
         <result property="grainwidth"    column="grainWidth"    />
@@ -181,16 +181,10 @@ grainWidth,</if>
             <if test="spikewidth != null">#{spikewidth},</if>
             <if test="row != null">#{row},</if>
             <if test="kernels != null">#{kernels},</if>
-            <if test="
-axiscolor != null">#{
-axiscolor},</if>
+            <if test="axiscolor != null">#{axiscolor},</if>
             <if test="grainweight != null">#{grainweight},</if>
-            <if test="
-grainlength != null">#{
-grainlength},</if>
-            <if test="
-grainwidth != null">#{
-grainwidth},</if>
+            <if test="grainlength != null">#{grainlength},</if>
+            <if test="grainwidth != null">#{grainwidth},</if>
             <if test="yield != null">#{yield},</if>
             <if test="seedyield != null">#{seedyield},</if>
          </trim>
@@ -226,19 +220,10 @@ grainwidth},</if>
             <if test="spikewidth != null">spikeWidth = #{spikewidth},</if>
             <if test="row != null">row = #{row},</if>
             <if test="kernels != null">kernels = #{kernels},</if>
-            <if test="
-axiscolor != null">
-axisColor = #{
-axiscolor},</if>
+            <if test="axiscolor != null">axisColor = #{axiscolor},</if>
             <if test="grainweight != null">grainWeight = #{grainweight},</if>
-            <if test="
-grainlength != null">
-grainLength = #{
-grainlength},</if>
-            <if test="
-grainwidth != null">
-grainWidth = #{
-grainwidth},</if>
+            <if test="grainlength != null">grainLength = #{grainlength},</if>
+            <if test="grainwidth != null">grainWidth = #{grainwidth},</if>
             <if test="yield != null">yield = #{yield},</if>
             <if test="seedyield != null">seedYield = #{seedyield},</if>
         </trim>
@@ -269,7 +254,7 @@ grainwidth},</if>
         from phenotype where pedigree=#{pedigree}
     </select>
 
-    <select id="selectAllPhenotype" resultType="Phenotype">
+    <select id="selectAllPhenotype" resultMap="PhenotypeResult">
         select * from phenotype
     </select>
 
@@ -284,7 +269,7 @@ grainwidth},</if>
 
     <select id="selectAgronomicalByname" resultType="AgronomicalVo">
         select spikeLength,spikeWidth,`row`,kernels,grainWeight,grainLength,grainWidth,yield,seedYield from phenotype
-        where pedigree=#{pedigree}
+        where pedigree=#{pedigree} and  spikeLength is not null and spikeWidth is not null and `row` is not null and kernels is not null and grainWeight is not null and grainLength is not null and grainWidth is not null and yield is not null and seedYield is not null
     </select>
 
     <select id="selectAllAgronomical" resultType="AgronomicalVo">
@@ -293,7 +278,7 @@ grainwidth},</if>
     </select>
 
     <select id="selectBxDate" resultType="BxDateVo">
-        select silking, dispersal, mature from phenotype where pedigree=#{pedigree}
+        select silking, dispersal, mature from phenotype where pedigree=#{pedigree} and silking is not null and dispersal is not null and mature is not null;
     </select>
 
     <select id="selectAllDate" resultType="BxDateVo">
@@ -302,14 +287,14 @@ grainwidth},</if>
 
     <select id="selectBxRateByName" resultType="BxRateVo">
         select rates,stemRot,roughDwarf from phenotype
-        where pedigree=#{pedigree}
+        where pedigree=#{pedigree} and rates is not null and stemRot is not null and roughDwarf is not null;
     </select>
 
     <select id="selectAllRate" resultType="BxRateVo">
         select rates,stemRot,roughDwarf from phenotype where rates is not null and stemRot is not null and roughDwarf is not null;
     </select>
 
-    <select id="selectTrait" resultType="String" statementType="STATEMENT">
+    <select id="selectTrait" resultType="String">
         select ${trait} from phenotype where pedigree is not null;
     </select>
 
@@ -318,31 +303,30 @@ grainwidth},</if>
     </select>
 
     <select id="selectTraitGroup" resultType="String">
-        select ${trait},year,location from phenotype GROUP BY ${trait},year,location
+        select ${trait} from phenotype where pedigree is not null
     </select>
 
     <select id="selectGe" resultType="GeVo">
-        select year,location,${trait} from phenotype group by year,location,${trait}
+        select pedigree,year,location,${trait} from phenotype where pedigree is not null
     </select>
 
     <select id="selectTraitGroupByName" resultType="String">
-        select ${trait},year,location from phenotype where pedigree=#{pedigree} GROUP BY ${trait},year,location
+        select ${trait},year,location from phenotype where pedigree=#{pedigree} and pedigree is not null GROUP BY ${trait},year,location
     </select>
 
     <select id="selectGeByName" resultType="GeVo">
         select year,location,${trait} from phenotype where pedigree=#{pedigree} group by year,location,${trait}
     </select>
-
     <select id="selectTVoByName" resultType="TraitVo">
         select pedigree,newSource,pastSource from phenotype where pedigree=#{pedigree}
     </select>
 
     <select id="selectTraitByName" resultType="String">
-        select ${trait} from phenotype where pedigree=#{pedigree}
+        select ${trait} from phenotype where pedigree=#{pedigree} and ${trait} is not null
     </select>
 
     <select id="selectAllMar" resultType="MorphologicalVo">
-        select height,stemDiameter,earHeight,leafLength,leafWidth,maleSpikes,spindleLength from phenotype
+        select code,pedigree,newsource,pastsource,year,location,height,stemDiameter,earHeight,leafLength,leafWidth,maleSpikes,spindleLength from phenotype
     </select>
 
     <select id="selectYearMor" resultType="YearMorVo">
@@ -351,6 +335,73 @@ grainwidth},</if>
 
     <select id="countBx" resultType="int">
         select count(*) from as_trait_type where trait_type_id in (select trait_type_id from trait_type where trait_type_name=#{traitName})
+    </select>
+
+    <select id="countData" resultType="int">
+        select count(*) from phenotype
+    </select>
+
+    <select id="selectAllAgr" resultType="AgronomicalVo">
+        select code,pedigree,newsource,pastsource,year,location,spikeLength,spikeWidth,`row`,kernels,grainWeight,grainLength,grainWidth,yield,seedYield from phenotype
+    </select>
+
+    <select id="selectYearAgr" resultType="YearAgr">
+        select year,spikeLength,spikeWidth,`row`,kernels,grainWeight,grainLength,grainWidth,yield,seedYield from phenotype group by year,spikeLength,spikeWidth,`row`,kernels,grainWeight,grainLength,grainWidth,yield,seedYield
+    </select>
+
+    <select id="selectAllAbiotic" resultType="AbioticStressVo">
+        select code,pedigree,newsource,pastsource,year,location,rust,stemrot,roughdwarf,blackpowder from phenotype
+    </select>
+
+    <select id="selectYearAbiotic" resultType="YearAbiotic">
+        select year,rust,stemrot,roughdwarf,blackpowder from phenotype group by year,rust,stemrot,roughdwarf,blackpowder
+    </select>
+
+    <select id="selectAllBiotic" resultType="BioticStressVo">
+        select code,pedigree,newsource,pastsource,year,location,rates from phenotype where rates is not null
+    </select>
+
+    <select id="selectYearBiotic" resultType="YearBiotic">
+        select year,rates from phenotype group by year,rates
+    </select>
+
+    <select id="selectBy" resultType="Phenotype">
+        select * from phenotype where 1=1
+        <if test="pedigree != null and pedigree !='' ">
+            and pedigree=#{pedigree}
+        </if>
+        <if test="year != null and year != '' ">
+            and year=#{year}
+        </if>
+        <if test="location != null and location != '' ">
+            and location=#{location}
+        </if>
+    </select>
+
+    <select id="selectWithTrait" resultType="SearchVo">
+        select code,pastSource,newSource,pedigree,year,location,${trait} from phenotype where 1=1
+        <if test="pedigree != null and pedigree !=''">
+            and pedigree=#{pedigree}
+        </if>
+        <if test="year != null and year != '' ">
+            and year=#{year}
+        </if>
+        <if test="location != null and location != '' ">
+            and location=#{location}
+        </if>
+    </select>
+
+    <select id="searchTrait" resultType="String">
+        select ${trait} from phenotype where 1=1
+        <if test="pedigree != null and pedigree !='' ">
+            and pedigree=#{pedigree}
+        </if>
+        <if test="year != null and year != '' ">
+            and year=#{year}
+        </if>
+        <if test="location != null and location != '' ">
+            and location=#{location}
+        </if>
     </select>
 
 </mapper>

@@ -1,6 +1,29 @@
 package com.ruoyi.zeamap.domain;
 
+import com.ruoyi.common.annotation.Excel;
+
 public class AgronomicalVo {
+    private Long code;
+
+    /** 系谱 */
+    @Excel(name = "系谱")
+    private String pedigree;
+
+    /** 新来源 */
+    @Excel(name = "新来源")
+    private String newsource;
+
+    /** 旧来源 */
+    @Excel(name = "旧来源")
+    private String pastsource;
+
+    /** 年份 */
+    @Excel(name = "年份")
+    private Long year;
+
+    /** 地点 */
+    @Excel(name = "地点")
+    private String location;
     private double spikeLength;
     private double spikeWidth;
     private double row;
@@ -101,15 +124,51 @@ public class AgronomicalVo {
     public AgronomicalVo() {
     }
 
-    public AgronomicalVo(double spikeLength, double spikeWidth, double row, double kernels, double grainWeight, double grainLength, double grainWidth, double yield, double seedYield) {
-        this.spikeLength = spikeLength;
-        this.spikeWidth = spikeWidth;
-        this.row = row;
-        this.kernels = kernels;
-        this.grainWeight = grainWeight;
-        this.grainLength = grainLength;
-        this.grainWidth = grainWidth;
-        this.yield = yield;
-        this.seedYield = seedYield;
+    public Long getCode() {
+        return code;
+    }
+
+    public void setCode(Long code) {
+        this.code = code;
+    }
+
+    public String getPedigree() {
+        return pedigree;
+    }
+
+    public void setPedigree(String pedigree) {
+        this.pedigree = pedigree;
+    }
+
+    public String getNewsource() {
+        return newsource;
+    }
+
+    public void setNewsource(String newsource) {
+        this.newsource = newsource;
+    }
+
+    public String getPastsource() {
+        return pastsource;
+    }
+
+    public void setPastsource(String pastsource) {
+        this.pastsource = pastsource;
+    }
+
+    public Long getYear() {
+        return year;
+    }
+
+    public void setYear(Long year) {
+        this.year = year;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

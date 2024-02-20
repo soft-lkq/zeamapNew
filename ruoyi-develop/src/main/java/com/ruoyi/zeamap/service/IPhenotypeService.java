@@ -136,10 +136,28 @@ public interface IPhenotypeService
 
     //所有形态学数据
     public List<MorphologicalVo> selectAllMar();
+    public List<AgronomicalVo> selectAllAgr();
+    public List<AbioticStressVo> selectAllAbiotic();
+    public List<BioticStressVo> selectAllBiotic();
 
     //年份分组查询形态学数据
     public List<YearMorVo> selectYearMor();
+    public List<YearAgr> selectYearAgr();
+    public List<YearAbiotic> selectYearAbiotic();
+    public List<YearBiotic> selectYearBiotic();
 
     //统计表型数据类型数量
     public int countBx(String traitName);
+
+    //统计数据行数
+    public int countData();
+
+    //判断
+    public boolean isTrait(String trait);
+
+    //条件查询
+    public List<Phenotype> selectBy(@Param("pedigree")String pedigree,@Param("year")Long year,@Param("location")String location);
+    public List<SearchVo> selectWithTrait(@Param("pedigree")String pedigree,@Param("year")Long year,@Param("location")String location,@Param("trait")String trait);
+    public List<SearchVo> resultWith(List<SearchVo> searchVos,List<String> strings);
+    public List<String> searchTrait(@Param("pedigree")String pedigree,@Param("year")Long year,@Param("location")String location,@Param("trait")String trait);
 }

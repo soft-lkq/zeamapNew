@@ -1,6 +1,7 @@
 package com.ruoyi.zeamap.service.impl;
 
 import java.math.BigDecimal;
+import java.sql.SQLSyntaxErrorException;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -369,7 +370,9 @@ public class PhenotypeServiceImpl implements IPhenotypeService
 
     @Override
     public List<String> selectTrait(String trait) {
-        return phenotypeMapper.selectTrait(trait);
+        List<String> strings;
+        strings=phenotypeMapper.selectTrait(trait);
+        return strings;
     }
 
     @Override
@@ -433,13 +436,88 @@ public class PhenotypeServiceImpl implements IPhenotypeService
     }
 
     @Override
+    public List<AgronomicalVo> selectAllAgr() {
+        return phenotypeMapper.selectAllAgr();
+    }
+
+    @Override
+    public List<AbioticStressVo> selectAllAbiotic() {
+        return phenotypeMapper.selectAllAbiotic();
+    }
+
+    @Override
+    public List<BioticStressVo> selectAllBiotic() {
+        return phenotypeMapper.selectAllBiotic();
+    }
+
+    @Override
     public List<YearMorVo> selectYearMor() {
         return phenotypeMapper.selectYearMor();
+    }
+
+    @Override
+    public List<YearAgr> selectYearAgr() {
+        return phenotypeMapper.selectYearAgr();
+    }
+
+    @Override
+    public List<YearAbiotic> selectYearAbiotic() {
+        return phenotypeMapper.selectYearAbiotic();
+    }
+
+    @Override
+    public List<YearBiotic> selectYearBiotic() {
+        return phenotypeMapper.selectYearBiotic();
     }
 
     @Override
     public int countBx(String traitName) {
         return phenotypeMapper.countBx(traitName);
     }
+
+    @Override
+    public int countData() {
+        return phenotypeMapper.countData();
+    }
+
+    @Override
+    public boolean isTrait(String trait) {
+        if(trait==null)
+            return false;
+        for (int i=trait.length();--i>=0;){
+            if(!Character.isDigit(trait.charAt(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
+    @Override
+    public List<Phenotype> selectBy(String pedigree, Long year, String location) {
+        return phenotypeMapper.selectBy(pedigree,year,location);
+    }
+
+    @Override
+    public List<SearchVo> selectWithTrait(String pedigree, Long year, String location,String trait) {
+        return phenotypeMapper.selectWithTrait(pedigree,year,location,trait);
+    }
+
+    @Override
+    public List<SearchVo> resultWith(List<SearchVo> searchVos, List<String> strings) {
+        SearchVo[] traitVos1 = searchVos.toArray(new SearchVo[searchVos.size()]);
+        String[] strings1 = strings.toArray(new String[strings.size()]);
+        for(int i=0;i<strings.size();i++){
+            traitVos1[i].setTrait(strings1[i]);
+        }
+        return Arrays.asList(traitVos1);
+    }
+
+    @Override
+    public List<String> searchTrait(String pedigree, Long year, String location, String trait) {
+        return phenotypeMapper.searchTrait(pedigree,year,location,trait);
+    }
+
 
 }
